@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>SLUMDUNK</title>
+  <link rel="stylesheet" href="main.css">
+
+<!---------------フォント--------------->
+
+<link rel="stylesheet" href="https://use.typekit.net/ayw4xoe.css">
+
+<script>
+  (function (d) {
+    var config = {
+      kitId: 'hmk2abd',
+      scriptTimeout: 3000,
+      async: true
+    },
+      h = d.documentElement, t = setTimeout(function () { h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive"; }, config.scriptTimeout), tk = d.createElement("script"), f = false, s = d.getElementsByTagName("script")[0], a; h.className += " wf-loading"; tk.src = 'https://use.typekit.net/' + config.kitId + '.js'; tk.async = true; tk.onload = tk.onreadystatechange = function () { a = this.readyState; if (f || a && a != "complete" && a != "loaded") return; f = true; clearTimeout(t); try { Typekit.load(config) } catch (e) { } }; s.parentNode.insertBefore(tk, s)
+  })(document);
+</script>
+
+<script>
+  (function (d) {
+    var config = {
+      kitId: 'hmk2abd',
+      scriptTimeout: 3000,
+      async: true
+    },
+      h = d.documentElement, t = setTimeout(function () { h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive"; }, config.scriptTimeout), tk = d.createElement("script"), f = false, s = d.getElementsByTagName("script")[0], a; h.className += " wf-loading"; tk.src = 'https://use.typekit.net/' + config.kitId + '.js'; tk.async = true; tk.onload = tk.onreadystatechange = function () { a = this.readyState; if (f || a && a != "complete" && a != "loaded") return; f = true; clearTimeout(t); try { Typekit.load(config) } catch (e) { } }; s.parentNode.insertBefore(tk, s)
+  })(document);
+</script>
+
+<!---------------フォント--------------->
+
+</head>
+
+<body>
+  <header class="header">
+    <div class="title">
+    <img src="titlepen.jpg" alt="">
+    </div>
+  </header>
+  <main>
+
+    <img src="01.jpg" alt="">
+    <div id="ちなみに"></div>
+    <p id="question" ></p>
+
+    <div class="answer">
+          <div>
+            <p id="choice00_label" name="choices" id="choices00" value="0"></p>
+          </div>
+          <div>
+            <p id="choice01_label" name="choices" id="choices01" value="1"></p>
+          </div>
+          <div>
+            <p id="choice02_label" name="choices" id="choices02" value="2"></p>
+          </div>
+          <div id="なるほど"></div>
+            <div class="集合">
+            </div>
+    </div>
+    <img src="01.jpg" alt="">
+  </main>
+  <footer class="footer">
+    <h1 id="result"></h1>
+  </footer>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script>
+
+$(function () { 
+
+// 問題の定義
+const questions = [
+'主人公の名前は？？',
+'桜木花道のモデルとなった人物は？？',
+'桜木花道がライバル視している湘北高校の背番号１１番の選手は？？',
+'桜木花道の出身の中学校は？？',
+'桜木花道が食べた赤城晴子の手料理は？？'
+];
+
+const mame = [
+'柳田悠岐はソフトバンクホークスの選手。',
+'柳田悠岐は広島県出身。',
+'柳田悠岐の憧れの選手は元カープ選手であり前々監督の野村謙二郎。',
+'柳田悠岐の出身高校は広島商業。',
+'柳田悠岐が大学時代の行きつけのお好み焼き屋は「Q」',
+];
+
+// 選択肢の定義
+const choices = [
+['桜木花道', 'マイケル・ジョーダン', '柳田悠岐'],
+['デニス・ロッドマン', 'リオネル・メッシ', '柳田悠岐'],
+['流川楓', '大谷翔平', '柳田悠岐'],
+['和光中', '吉和中', '広島商業'],
+['焼うどん','ラーメン','親子丼'],
+];
+
+// 正解の定義
+const answer = [0, 0, 0,0,0];
+
+// カウント用の変数
+let count = 0;
+let mamecount = 0;
+let correct = 0;
+
+// 最初の問題と選択肢を表示
+$('#question').text('Q1.' + questions[count]);
+$('#choice00_label').text(choices[count][0]);
+$('#choice01_label').text(choices[count][1]);
+$('#choice02_label').text(choices[count][2]);
+
+
+
+// クリック時に正解不正解を表示＆次の問題を表示
+$('[name="choices"]').on('click',function () {
+// 豆知識を表示、正解の時の処理
+if($(this).val() == answer[count]) {
+$('#ちなみに').text('ちなみに...');
+$('#question').text(mame[count]);
+$('#choice00_label').text('');
+$('#choice01_label').text('');
+$('#choice02_label').text('');
+// alert('OK');
+$('#result').text('あなたは天才！！！');
+// 正解数をカウント
+correct++;
+// 豆知識を表示、間違えた時の処理
+}else{
+$('#ちなみに').text('ちなみに...');
+$('#question').text(mame[count]);
+$('#choice00_label').text('');
+$('#choice01_label').text('');
+$('#choice02_label').text('');
+// alert('NG');
+$('#result').text('庶民か。。。');};
+//なるほど表示、豆カウントプラス
+$('#なるほど').text('なるほど');
+mamecount++;
+});
+
+
+// なるほどボタンクリック時、カウントプラス
+$('#なるほど').on('click', function () { 
+count++;
+$('#なるほど').text('');
+$('#ちなみに').text('');
+// 次の問題を表示  
+if(count == mamecount ){
+$('#count').text(Number(count)+1);
+$('#question').text('Q'+(Number(count)+1) +'.'+ questions[count]);
+$('#choice00_label').text(choices[count][0]);
+$('#choice01_label').text(choices[count][1]);
+$('#choice02_label').text(choices[count][2]);
+$('#result').text('');
+// 終了で正解数を表示
+}else{
+// alert('終了');
+$('#result').text('終了');
+};
+});
+});
+
+</script>
+</body>
+
+</html>

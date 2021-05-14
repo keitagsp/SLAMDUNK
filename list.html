@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>配列と繰り返しの練習</title>
+</head>
+
+<body>
+  <h1>配列と繰り返しの練習</h1>
+  <div id="echo"></div>
+
+  <select id="date"></select>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script>
+    // // 配列を順番に画面表示してみよう
+    // const arry = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    // for(let i=0; i < arry.length; i++){
+    // console.log(arry[i]);
+    // }
+
+
+    // 配列を用いて<select>の<option>を生成してみよう
+    const years = [1901, 2000]; 
+    const yearstags = [];
+    for(let i= years[0]; i <= years[1];i++){
+      yearstags.push('<option>'+i+'</option>');
+
+    }
+
+    $('#date').html(yearstags);
+
+
+  </script>
+</body>
+
+</html>
